@@ -1,4 +1,4 @@
-export class GuiModel {
+﻿export class GuiModel {
 
     /* HINWEIS: Texte sind in der Datei ../example-translation-service.ts definiert.
     Erscheinen Texte in {}, so kann die Übersetzung in example-translation-service.ts definiert werden
@@ -29,6 +29,29 @@ export class GuiModel {
                             "width": 1,
                             "required": true
                         },
+			{
+				"id": "nickname",
+				"type": "text",
+				"name": "Nickname",
+				"width": 2,
+				"required" :true
+			},
+				{
+			    "id":   "group",
+                            "type": "autocomplete",
+                            "name": "Group",
+                            "data": [ "Study", "Family" , "School"],
+                            "form": "GroupForm",
+                            "width": 2
+                        },
+					{
+			    "id":   "location",
+                            "type": "autocomplete",
+                            "name": "Location",
+                            "data": [ "Fussball", "Kino" , "Wandern"],
+                            "form": "GroupForm",
+                            "width": 2
+                        },				
                         {
                             "id":   "location",
                             "type": "autocomplete",
@@ -51,6 +74,7 @@ export class GuiModel {
                             "height": 4,
                             "maxLength": 5000,
                         },
+		
                         {
                             "type": "deleteButton",
                             "name": "Delete"
@@ -76,6 +100,102 @@ export class GuiModel {
                             "width": 2,
                             "required": true
                         },
+			
+			{
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comments",
+                            "width": 2,
+                            "height": 4,
+                            "maxLength": 5000,
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+		   {
+                    "id": "ActivityForm",
+                    "title": "Activity",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "ActivityName",
+                            "width": 2,
+                            "required": true
+                        },
+				{
+                            "id": "evtDate",
+                            "type": "date",
+                            "name": "Date",
+                            "width": 2
+                        },
+			{
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comments",
+                            "width": 2,
+                            "height": 4,
+                            "maxLength": 5000,
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        },
+{
+			    "id":   "location",
+                            "type": "autocomplete",
+                            "name": "Location",
+                            "data": [ "Adelboden", "Winterthur" , "Zinal", "Zürich"],
+                            "form": "LocationForm",
+                            "width": 2
+                        },			
+			
+                    ]
+                },
+		{
+                    "id": "GroupForm",
+                    "title": "Group",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "GroupName",
+                            "width": 2,
+                            "required": true
+                        },
+			{
+                            "id": "evtCrdate",
+                            "type": "date",
+                            "name": "CreationDate",
+                            "width": 2
+                        },
+			{
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comments",
+                            "width": 2,
+                            "height": 4,
+                            "maxLength": 5000,
+                        },
                         {
                             "type": "deleteButton",
                             "name": "Delete"
@@ -90,6 +210,7 @@ export class GuiModel {
                         }
                     ]
                 }
+
             ],
             "pageList": [
                 {
@@ -103,6 +224,13 @@ export class GuiModel {
                             "color": "blue",
                             "page": "friendspage",
                         },
+			{
+			    "type": "button",
+                            "name": "Groups",
+                            "icon": "fa-weixin",
+                            "color": "wisteria",
+                            "page": "groupspage",
+                        },
                         {
                             "type": "button",
                             "name": "Location",
@@ -110,8 +238,16 @@ export class GuiModel {
                             "color": "yellow",
                             "page": "locationspage",
                         },
+			{
+                            "type": "button",
+                            "name": "Activity",
+                            "icon": "fa-soccer-ball-o",
+                            "color": "magenta",
+                            "page": "activityspage",
+                        },
                     ]
                 },
+		
                 {
                     "id": "friendspage",
                     "elementList": [
@@ -137,6 +273,62 @@ export class GuiModel {
                                 "form": "FriendForm"
                             }
                         },
+                    ]
+                },
+		{
+                    "id": "groupspage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewGroup",
+                            "icon": "fa-weixin",
+                            "color": "green",
+                            "form": {
+                                "form": "GroupForm"
+                            }
+                        },
+			 {
+                            "type": "list",
+                            "icon": "fa-weixin",
+                            "color": "wisteria",
+                            "search": true,
+                            "data": [ { name: "Study" }, { name: "Family"} , { name: "School"} ],
+                            "form": {
+                                "form": "GroupForm"
+                            }
+                        },
+               
+                    ]
+                },
+		{
+                    "id": "activityspage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewActivity",
+                            "icon": "fa-soccer-ball-o",
+                            "color": "magenta",
+                            "form": {
+                                "form": "ActivityForm"
+                            }
+                        },
+			 {
+                            "type": "list",
+                            "icon": "fa-soccer-ball-o",
+                            "color": "magenta",
+                            "search": true,
+                            "data": [ { name: "Fussball" }, { name: "Kino"} , { name: "Wandern"} ],
+                            "form": {
+                                "form": "ActivityForm"
+                            }
+                        },
+               
                     ]
                 },
                 {
